@@ -7,7 +7,7 @@ const BYTE_SIZE: usize = 8;
 
 #[derive(Debug)]
 pub struct Entropy{
-    entropy: Vec<u8>
+    pub entropy: Vec<u8>
 }
 
 impl Entropy {
