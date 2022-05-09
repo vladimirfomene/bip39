@@ -1,7 +1,9 @@
 use entropy::Entropy;
+use language::english;
 use bitcoin_hashes::{ sha256, Hash };
 
 pub mod entropy;
+pub mod language;
 
 fn main() {
     
@@ -13,6 +15,10 @@ fn main() {
     let checksum = generate_checksum(ent);
 
     println!("{}, {:?}", checksum.len(), checksum);
+
+    //println!("{:b}", checksum[0]);
+
+    println!("{}", english::WORDS.len());
 
     //generate checksum from entropy
     //Build mnemonic from entropy and wordlist
@@ -27,7 +33,7 @@ fn generate_checksum(ent: Entropy) -> Vec<u8> {
     //multiply by 8 to convert from bytes to bits, divide by 32 as recommended in the BIP
     //This will give you the size of checksum in bits and now you divide by 8 again to 
     //convert to bytes
-    let checksum_size = ((ent.entropy.len() * 8) / 32) / 8;
+    //let checksum_size = ((ent.entropy.len() * 8) / 32) / 8;
     println!("{:?}", entropy_hash);
-    return entropy_hash[0..checksum_size].to_owned();
+    return entropy_hash[0..1].to_owned();
 }
