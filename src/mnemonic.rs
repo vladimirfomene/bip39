@@ -1,19 +1,19 @@
-use language::{self, english };
+use crate::language::{self, english };
+use crate::util;
 
-mod util;
-
-pub struct Mnemonic {
+#[derive(Debug)]
+pub struct Mnemonic{
     pub lang: language::Language,
-    pub words: Vec<&str>
+    pub words: Vec<String>
 }
 
 impl Mnemonic {
 
-    fn from_entropy_checksum(entropy: Vec<u8>, checksum: Vec<u8>) -> Mnemonic {
-        let checksum_size = ((ent.entropy.len() * util::BYTE_SIZE) / 32);
+    pub fn from_entropy_checksum(entropy: Vec<u8>, checksum: Vec<u8>) -> Mnemonic {
+        let checksum_size = ((entropy.len() * util::BYTE_SIZE) / 32);
         let entropy_size = entropy.len() * util::BYTE_SIZE;
         let mnemonic_word_count = (entropy_size + checksum_size) / 11;
-        let mut bits = [false; (entropy_size + checksum_size)];
+        let mut bits = vec![false; (entropy_size + checksum_size)];
 
         //add entropy bits to bits array
         for (index, bit) in bits[..(entropy.len() * util::BYTE_SIZE)].iter_mut().enumerate(){
@@ -35,12 +35,12 @@ impl Mnemonic {
             let word = english::WORDS[word_index];
 
             //add word to mnemonic list
-            mnemonic_list.push(word);
+            mnemonic_list.push(word.to_string());
         }
 
         //return Mnemonic
         return Mnemonic {
-            lang: Language::English,
+            lang: language::Language::English,
             words: mnemonic_list
         }
         

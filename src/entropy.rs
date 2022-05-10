@@ -5,7 +5,7 @@ const MAX_NUM_BITS: usize = 256;
 const ENTROPY_MULTIPLE: usize = 32;
 const BYTE_SIZE: usize = 8;
 
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 pub struct Entropy{
     pub entropy: Vec<u8>
 }
