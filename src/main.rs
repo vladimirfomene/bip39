@@ -1,12 +1,14 @@
 use entropy::Entropy;
 use language::english;
 use mnemonic::Mnemonic;
+use seed::compute_seed;
 use bitcoin_hashes::{ sha256, Hash };
 
 mod entropy;
 mod language;
 mod mnemonic;
 mod util;
+mod seed;
 
 fn main() {
     
@@ -29,7 +31,8 @@ fn main() {
 
     //generate checksum from entropy
     //Build mnemonic from entropy and wordlist
-    
+    let seed = compute_seed(mnemonic.words, "");
+    println!("{:?}", seed);
 
     //Generate seed from mnemonic using PBKDF2
 }
