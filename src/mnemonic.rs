@@ -10,10 +10,10 @@ pub struct Mnemonic{
 impl Mnemonic {
 
     pub fn from_entropy_checksum(entropy: Vec<u8>, checksum: Vec<u8>) -> Mnemonic {
-        let checksum_size = ((entropy.len() * util::BYTE_SIZE) / 32);
+        let checksum_size = (entropy.len() * util::BYTE_SIZE) / util::ENTROPY_MULTIPLE;
         let entropy_size = entropy.len() * util::BYTE_SIZE;
-        let mnemonic_word_count = (entropy_size + checksum_size) / 11;
-        let mut bits = vec![false; (entropy_size + checksum_size)];
+        let mnemonic_word_count = (entropy_size + checksum_size) / util::WORD_BITS;
+        let mut bits = vec![false; entropy_size + checksum_size];
 
         //add entropy bits to bits array
         for (index, bit) in bits[..(entropy.len() * util::BYTE_SIZE)].iter_mut().enumerate(){
