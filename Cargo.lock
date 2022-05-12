@@ -13,8 +13,10 @@ name = "bip39"
 version = "0.1.0"
 dependencies = [
  "bitcoin_hashes",
+ "hmac",
  "pbkdf2",
  "rand",
+ "sha2",
  "unicode-normalization",
 ]
 
