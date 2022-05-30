@@ -5,7 +5,7 @@
 
 # Setup the Project
 
-- Clone project with `git clone <repository-clone-link>
+- Clone project with `git clone <repository-clone-link>`
 
 # Run the project
 
